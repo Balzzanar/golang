@@ -8,7 +8,6 @@ import (
 )
 
 const LOGPATH string = "page.log"
-
 var templates = template.Must(template.ParseGlob("html/*"))
 
 type Page struct {
@@ -17,7 +16,6 @@ type Page struct {
 
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-
 	p := &Page{
 		Title: "This is a test page!",
 	}
@@ -45,5 +43,5 @@ func main() {
 	http.HandleFunc("/", homeHandler)
 	
 	log.Printf("|Running...")
-	log.Fatal(http.ListenAndServe(":8080", nil)) 
+	log.Fatal(http.ListenAndServe(":80", nil)) 
 }
