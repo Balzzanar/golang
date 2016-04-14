@@ -1,3 +1,6 @@
-* {
-	border: 1px solid red;
+.header {
+	font-weight: bold;
+}
+.recept-table {
+	margin-top: 20px;
 }
