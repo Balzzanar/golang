@@ -19,84 +19,44 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<a href="#me" class="icon fa-home active"><span>Hem</span></a>
-						<a href="#work" class="icon fa fa-spoon"><span>Recept</span></a>
+						<a href="#recept" class="icon fa fa-spoon"><span>Recept</span></a>
 						<a href="#contact" class="icon fa fa-futbol-o"><span>Träning</span></a>
+						<a href="#wine" class="icon fa fa-glass"><span>Viner</span></a>
 						<a href="#pass-gen" class="icon fa fa-key"><span>Pass-Gen</span></a>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Me -->
+						<!-- Start -->
 							<article id="me" class="panel">
 								<header>
 									<h1>Sphann</h1>
 									<p>Gott och blandat</p>
 								</header>
-								<a href="#work" class="jumplink pic">
+								<a href="#recept" class="jumplink pic">
 									<span class="arrow icon fa-chevron-right"><span>See my work</span></span>
 									<img src="/recources/images/me.jpg" alt="" />
 								</a>
 							</article>
 
-						<!-- Work -->
-							<article id="work" class="panel">
+						<!-- Recept -->
+							<article id="recept" class="panel">
 								<header>
-									<h2>Work</h2>
+									<h2>Recept</h2>
 								</header>
 								<p>
-									Phasellus enim sapien, blandit ullamcorper elementum eu, condimentum eu elit.
-									Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-									luctus elit eget interdum.
+									Recept som har fastnat av olika anledningar, för att de är bra, enkla eller bara super goda!
 								</p>
 								<section>
 									<div class="row">
+										{{ range $key, $value := .Recepts }}
 										<div class="4u 12u$(mobile)">
-											<a href="#recept1" class="image fit jumplink pic"><img src="/recources/images/pic01.jpg" alt=""></a>
-											En mycket intressant måltid var det här!
+											<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+											{{ $value.Name }}
 										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic02.jpg" alt=""></a>
-										</div>
-										<div class="4u$ 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic03.jpg" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic04.jpg" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic05.jpg" alt=""></a>
-										</div>
-										<div class="4u$ 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic06.jpg" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic07.jpg" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic08.jpg" alt=""></a>
-										</div>
-										<div class="4u$ 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic09.jpg" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic10.jpg" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic11.jpg" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic11.jpg" alt=""></a>
-										</div>
-										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic11.jpg" alt=""></a>
-										</div>																			<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic11.jpg" alt=""></a>
-										</div>
-										<div class="4u$ 12u$(mobile)">
-											<a href="#" class="image fit"><img src="/recources/images/pic12.jpg" alt=""></a>
-										</div>
-									</div>
+										{{end}}
+									</div>    
 								</section>
 							</article>
 
@@ -133,38 +93,19 @@
 								<header>
 									<h2>Password Generator</h2>
 								</header>
-								<form action="#" method="post">
-									<div>
-										<div class="row">
-											<div class="6u 12u$(mobile)">
-												<input type="text" name="name" placeholder="Name" />
-											</div>
-											<div class="6u$ 12u$(mobile)">
-												<input type="text" name="email" placeholder="Email" />
-											</div>
-											<div class="12u$">
-												<input type="text" name="subject" placeholder="Subject" />
-											</div>
-											<div class="12u$">
-												<textarea name="message" placeholder="Message" rows="8"></textarea>
-											</div>
-											<div class="12u$">
-												<input type="submit" value="Send Message" />
-											</div>
-										</div>
-									</div>
-								</form>
+								Soon to come...
 							</article>
 
 
 
-							<!-- Recept 1 -->
-							<article id="recept1" class="panel">
+							<!-- Recepts -->
+							{{ range $key, $value := .Recepts }}
+							<article id="{{ $value.ID }}" class="panel">
 								<header>
-								<a href="#work" class="jumplink pic">
+								<a href="#recept" class="jumplink pic">
 									<span class="arrow icon fa-arrow-left"></span>
 								</a>
-									<h2>Äpplesill med Ingefära</h2>
+									<h2>{{ $value.Name }}</h2>
 									Mycket spännande sill
 									<div class="6u 12u$(mobile)">									
 										<table class="recept-table">
@@ -172,62 +113,41 @@
 												<td class="header">Mått</td>
 												<td class="header">Ingrediens</td>
 											</tr>
-											<tr>
-												<td>1 burk</td>
-												<td>Inläggningssill</td>
-											</tr>
-											<tr>
-												<td>3 cm</td>
-												<td>Färskingefära</td>
-											</tr>
-											<tr>
-												<td>2st</td>
-												<td>Små röda äpplen</td>
-											</tr>										
-											<tr>
-												<td>1 msk</td>
-												<td>Rosépeppar</td>
-											</tr>											
-										</table>
-
-										<table class="recept-table">
-											<tr>
-												<td class="header">Mått</td>
-												<td class="header">Ingrediens</td>
-											</tr>
-											<tr>
-												<td>0.5 dl</td>
-												<td>Ättika</td>
-											</tr>
-											<tr>
-												<td>1 dl</td>
-												<td>Strösocker</td>
-											</tr>
-											<tr>
-												<td>1.5 dl</td>
-												<td>Vatten</td>
-											</tr>																
+											{{ range $k, $v := $value.Ingrediences }}
+												<tr>
+													<td>{{ $v.Amount }}</td>
+													<td>{{ $v.Name }}</td>
+												</tr>
+											{{end}}
 										</table>										
 									</div>
 
 										<div>
 											<h3>Tillagning</h3>
 											<ul>
-												<li>1. Koka upp lagen, låt den kallna.</li>
-												<hr />
-												<li>2. Skala ingefära och strimmla den. Dela äpplen i 4 kvartar 
-skär ut kärnhuset och skiva tunnt. Stöt rosépeppar, blanda med lagen.</li>
-												<hr />
-												<li>3. Skär sill i bitar, slå över lagen. Låt stå minst ett dygn.</li>
-												<hr />
+												{{ range $k, $v := $value.Making }}
+													<li>{{ $v }}</li>
+													<hr />
+												{{end}}
 											</ul>
 
 											<h3>Noteringar</h3>
-											151223: Hade inga äpplen så använde clementiner i stället, vart ingen höjdare.
+											{{ range $k, $v := $value.Notes }}
+												{{ $v }}
+											{{end}}
 										</div>
+								</header>							
+							</article>
+							{{end}}
+
+							<!-- Viner -->
+							<article id="wine" class="panel">
+								<header>
+								Lista på goda viner...
 								</header>
 								
 							</article>
+
 
 
 					</div>
