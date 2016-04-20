@@ -5,7 +5,7 @@ $locationProvider.html5Mode(true)
 ```
 
 ## Recept Template
-##### Types
+##### Type
 * Julmat
 * Julgodis
 * Förrätt
