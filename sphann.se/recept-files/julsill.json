@@ -1,0 +1,51 @@
+{
+	"ID": "julsill", 
+	"Type": "Julmat",
+	"Name": "Julsill",
+	"Description": "Klassisk jul sill, god och ett måste på julbordet. Tid: 8h + 24h",
+
+	"Ingrediences": [
+		{
+			"Name": "Inläggnings sill",
+			"Amount": "1 burk"
+		},
+		{
+			"Name": "Vatten",
+			"Amount": "2.5dl"
+		},
+		{
+			"Name": "Ättika 24%",
+			"Amount": "4msk"
+		},
+		{
+			"Name": "Socker",
+			"Amount": "4msk"
+		},
+		{
+			"Name": "Salt",
+			"Amount": "1krm"
+		},	
+		{
+			"Name": "Röd lök",
+			"Amount": "1-2st"
+		},					
+		{
+			"Name": "Kryddpepparkorn",
+			"Amount": "30st"
+		}
+	],
+
+	"Making": [
+		"Skölj den färdiga imläggningssillen och låt den rinna av. Lägg den i kallt vatten för att vatta ur i minst 8 timmar.",
+		"Koka upp vatten, ättika, socker och salt i en liten kastull och låt det kallna.", 
+		"Halvera och skiva löken. Grov krossa kryddpepparkornen i en mortel skär skillen i ca 2cm tjocka bitar.",
+		"Varva sillen med kryddpeppar och rödlök i en burk. Häll den kalla lagen över. Sillen är färdig efter ett dygn, men kan gärna stå och mogna flera dagar."
+	],
+
+
+	"Notes": [
+		"God, enkel att göra."
+	],
+
+	"Image": "/recources/images/pic01.jpg"
+}

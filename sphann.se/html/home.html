@@ -49,16 +49,97 @@
 									Recept som har fastnat av olika anledningar, för att de är bra, enkla eller bara super goda!
 								</p>
 								<section>
+									<h3>Julmat</h3>									
 									<div class="row">
 										{{ range $key, $value := .Recepts }}
-										<div class="4u 12u$(mobile)">
-											<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
-											{{ $value.Name }}
-										</div>
+											{{ if eq $value.Type "Julmat" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
 										{{end}}
-									</div>    
+									</div>
+
+									<h3>Julgodis</h3>
+									<div class="row">
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Julgodis" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}
+									</div>
+
+									<h3>Förrätter</h3>
+									<div class="row">
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Förrätt" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}
+									</div>
+
+										Huvudrätter
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Huvudrätt" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}					
+
+										Efterrätter
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Efterrätt" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}		
+
+										Frukost
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Frukost" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}		
+
+										Dryck (Brygg)
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Dryck" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}																							
+										Övrigt
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Övrigt" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}															
+									</div>    -->																		
+
 								</section>
 							</article>
+
+
+
 
 						<!-- Contact -->
 							<article id="contact" class="panel">
@@ -106,7 +187,7 @@
 									<span class="arrow icon fa-arrow-left"></span>
 								</a>
 									<h2>{{ $value.Name }}</h2>
-									Mycket spännande sill
+									{{ $value.Description }}
 									<div class="6u 12u$(mobile)">									
 										<table class="recept-table">
 											<tr>
@@ -115,8 +196,12 @@
 											</tr>
 											{{ range $k, $v := $value.Ingrediences }}
 												<tr>
-													<td>{{ $v.Amount }}</td>
-													<td>{{ $v.Name }}</td>
+													{{if eq $v.Name ""}}
+														<td colspan="2"><i><b>{{ $v.Amount }}</b></i></td>
+													{{else}}
+														<td>{{ $v.Amount }}</td>
+														<td>{{ $v.Name }}</td>
+													{{end}}
 												</tr>
 											{{end}}
 										</table>										

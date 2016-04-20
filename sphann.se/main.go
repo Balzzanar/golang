@@ -23,6 +23,8 @@ type Recept struct {
 	Making []string 
 	Notes []string
 	Image string
+	Description string
+	Type string
 }
 
 type Page struct {
