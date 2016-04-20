@@ -3,3 +3,52 @@
 ``` javascript
 $locationProvider.html5Mode(true)
 ```
+
+## Recept Template
+```json
+/*
+	TYPES:
+		Julmat
+		Julgodis
+		Förrätt
+		Huvudrätt
+		Efterrätt
+		Frukost
+		Dryck
+		Övrigt
+*/
+{
+	"ID": "template", 
+	"Type": "template",
+	"Name": "Template",
+	"Description": "template template template",
+
+	"Ingrediences": [
+		{
+			"Name": "template",
+			"Amount": "1 L"
+		},
+		{
+			"Name": "",
+			"Amount": "Lag"
+		},
+		{
+			"Name": "template",
+			"Amount": "2 L"
+		}
+	],
+
+	"Making": [
+		"Gör så här",
+		"Och såhär", 
+		"Sedan såhär"
+	],
+
+
+	"Notes": [
+		"Detta är min åsikt!"
+	],
+
+	"Image": "/recources/images/pic01.jpg"
+}
+```
