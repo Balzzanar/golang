@@ -5,18 +5,16 @@ $locationProvider.html5Mode(true)
 ```
 
 ## Recept Template
+##### Types
+* Julmat
+* Julgodis
+* Förrätt
+* Huvudrätt
+* Efterrätt
+* Frukost
+* Dryck
+* Övrigt
 ```json
-/*
-	TYPES:
-		Julmat
-		Julgodis
-		Förrätt
-		Huvudrätt
-		Efterrätt
-		Frukost
-		Dryck
-		Övrigt
-*/
 {
 	"ID": "template", 
 	"Type": "template",
