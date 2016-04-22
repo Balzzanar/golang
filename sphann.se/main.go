@@ -27,9 +27,15 @@ type Recept struct {
 	Type string
 }
 
+type Files struct {
+	Name string
+	Content string
+}
+
 type Page struct {
 	Title string
 	Recepts []Recept 
+	Files []Files
 }
 
 /**
@@ -37,8 +43,9 @@ type Page struct {
  *
  * Reads recepies from json formated files in a given dir.
  */
-func loadRecepts() []Recept {
+func loadRecepts() ([]Recept, []Files) {
 	var recepts []Recept
+	var filesarr []Files
 	files, err := ioutil.ReadDir("recept-files")
 	if err != nil {
 		log.Fatal(err)
@@ -46,8 +53,10 @@ func loadRecepts() []Recept {
 	for _, file := range files {
 		b, _ := ioutil.ReadFile("recept-files/" + file.Name())
 		recepts = append(recepts, parseRecept(b))
+		f := Files{Name: file.Name(), Content: string(b)}
+		filesarr = append(filesarr, f)
 	}
-	return recepts
+	return recepts, filesarr
 }
 
 /**
@@ -66,9 +75,11 @@ func parseRecept(raw []byte) Recept {
 
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	recerpts, files := loadRecepts()
 	p := &Page{
 		Title: "Sphann, home page!",
-		Recepts: loadRecepts(),
+		Recepts: recerpts,
+		Files: files,
 	}
 
     err := templates.ExecuteTemplate(w, "home", p)

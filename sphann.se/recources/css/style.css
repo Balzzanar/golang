@@ -4,3 +4,7 @@
 .recept-table {
 	margin-top: 20px;
 }
+#contact .recept-file:hover {
+	cursor: hand;
+	background-color: #f4f4f4;
+}

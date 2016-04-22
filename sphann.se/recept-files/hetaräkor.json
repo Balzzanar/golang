@@ -1,5 +1,5 @@
 {
-	"ID": "hetaräkor", 
+	"ID": "hetarakor", 
 	"Type": "Förrätt",
 	"Name": "Heta Räkor",
 	"Description": "Succse!",
@@ -70,8 +70,8 @@
 
 
 	"Notes": [
-		"Detta är min åsikt!"
+		"Man kan ha dubbelt så mycket räkor till samma mängd sås."
 	],
 
-	"Image": "/recources/images/pic01.jpg"
+	"Image": "/recources/images/hetarakor.png"
 }
