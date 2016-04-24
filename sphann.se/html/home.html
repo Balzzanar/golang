@@ -164,17 +164,19 @@
 								<header>
 									<h2>Contact Me</h2>
 								</header>
-								<form action="#" method="post">
+								<label id="add-new-recept" class="icon fa fa-plus"><span></span></label>
+								<input type="input" id="new-recept" value="" />
+								<form action="javascript:sendForm()" method="post">
 									<div>
 										{{ range $key, $value := .Files }}
 											<label class="recept-file" content="{{ $value.Content }}">{{ $value.Name }}</label>
 										{{end}}
 										<div class="row">
 											<div class="12u$">
-												<textarea id="recept-textarea" name="recept-raw" placeholder="Message" rows="8"></textarea>
+												<textarea id="recept-textarea" name="recept-raw" placeholder="Message" rows="28"></textarea>
 											</div>
 											<div class="12u$">
-												<input type="submit" id="recept-file" value="Send Message" />
+												<input type="submit" id="recept-file" value="Uppdatera" />
 											</div>
 										</div>
 									</div>

@@ -89,6 +89,30 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
     }
 }
 
+func saveReceptHandler(w http.ResponseWriter, r *http.Request) {
+    decoder := json.NewDecoder(r.Body)
+    var recept Recept
+    err := decoder.Decode(&recept)
+    if err != nil {
+        log.Fatal(err)
+        panic("Failed to decode json")
+    }
+    log.Println(recept.ID)
+	fname := recept.ID + ".json"
+	log.Println(recept.ID)
+
+	toFile, err := json.Marshal(recept)
+    if err != nil {
+        log.Fatal(err)
+        panic("Failed to encode json")
+    }
+	e := ioutil.WriteFile("recept-files/" + fname, toFile, 0644)
+	if e != nil {
+    	panic(e)
+	}
+    w.WriteHeader(200)
+}
+
 
 func initlog() {
 //	log.SetOutput(f) 
@@ -103,6 +127,7 @@ func main() {
     http.Handle("/recources/", http.StripPrefix("/recources/", resources))
 	
 	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/saverecept", saveReceptHandler)
 
 	log.Printf("|Running...")
 	log.Fatal(http.ListenAndServe(":80", nil)) 

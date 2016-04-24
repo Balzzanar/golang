@@ -6,5 +6,8 @@
 }
 #contact .recept-file:hover {
 	cursor: hand;
-	background-color: #f4f4f4;
+	background-color: #66ff33;
+}
+.enabled {
+	background-color: #8cff66;	
 }
