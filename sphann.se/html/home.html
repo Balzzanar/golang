@@ -20,7 +20,9 @@
 					<nav id="nav">
 						<a href="#me" class="icon fa-home active"><span>Hem</span></a>
 						<a href="#recept" class="icon fa fa-spoon"><span>Recept</span></a>
-						<a href="#contact" class="icon fa fa-futbol-o"><span>Träning</span></a>
+						{{ if .Edit }}
+							<a href="#contact" class="icon fa fa-pencil"><span>Editera Recept</span></a>
+						{{end}}
 						<a href="#wine" class="icon fa fa-glass"><span>Viner</span></a>
 						<a href="#pass-gen" class="icon fa fa-key"><span>Pass-Gen</span></a>
 					</nav>

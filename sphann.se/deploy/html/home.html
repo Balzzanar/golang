@@ -1,0 +1,273 @@
+{{define "home"}}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SPHANN</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/recources/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/recources/css/main.css" />
+		<link rel="stylesheet" href="/recources/css/style.css" />
+		<noscript><link rel="stylesheet" href="/recources/css/noscript.css" /></noscript>	
+		<!--[if lte IE 8]><link rel="stylesheet" href="/recources/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper-->
+			<div id="wrapper">
+
+				<!-- Nav -->
+					<nav id="nav">
+						<a href="#me" class="icon fa-home active"><span>Hem</span></a>
+						<a href="#recept" class="icon fa fa-spoon"><span>Recept</span></a>
+						{{ if .Edit }}
+							<a href="#contact" class="icon fa fa-pencil"><span>Editera Recept</span></a>
+						{{end}}
+						<a href="#wine" class="icon fa fa-glass"><span>Viner</span></a>
+						<a href="#pass-gen" class="icon fa fa-key"><span>Pass-Gen</span></a>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Start -->
+							<article id="me" class="panel">
+								<header>
+									<h1>Sphann</h1>
+									<p>Gott och blandat</p>
+								</header>
+								<a href="#recept" class="jumplink pic">
+									<span class="arrow icon fa-chevron-right"><span>See my work</span></span>
+									<img src="/recources/images/me.jpg" alt="" />
+								</a>
+							</article>
+
+						<!-- Recept -->
+							<article id="recept" class="panel">
+								<header>
+									<h2>Recept</h2>
+								</header>
+								<p>
+									Recept som har fastnat av olika anledningar, för att de är bra, enkla eller bara super goda!
+								</p>
+								<section>
+									<h3>Julmat</h3>									
+									<div class="row">
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Julmat" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}
+									</div>
+									<hr/>
+
+									<h3>Julgodis</h3>
+									<div class="row">
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Julgodis" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}
+									</div>
+									<hr/>
+
+									<h3>Förrätter</h3>
+									<div class="row">
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Förrätt" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}
+									</div>
+									<hr/>
+
+									<h3>Huvudrätter</h3>
+									<div class="row">
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Huvudrätt" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}					
+									</div>
+									<hr/>
+
+									<h3>Efterrätter</h3>
+									<div class="row">
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Efterrätt" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}		
+									</div>
+									<hr/>
+
+									<h3>Frukost</h3>
+									<div class="row">
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Frukost" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}		
+									</div>
+									<hr/>
+
+									<h3>Dryck (Brygg)</h3>
+									<div class="row">									
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Dryck" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}																		
+									</div>		
+									<hr/>	
+									
+									<h3>Övrigt</h3>
+									<div class="row">									
+										{{ range $key, $value := .Recepts }}
+											{{ if eq $value.Type "Övrigt" }}
+												<div class="4u 12u$(mobile)">
+													<a href="#{{ $value.ID }}" class="image fit jumplink pic"><img src="{{ $value.Image }}" alt=""></a>
+													{{ $value.Name }}
+												</div>
+											{{end}}
+										{{end}}															
+									</div>
+									<hr/>
+
+								</section>
+							</article>
+
+
+
+
+						<!-- Contact -->
+							<article id="contact" class="panel">
+								<header>
+									<h2>Contact Me</h2>
+								</header>
+								<label id="add-new-recept" class="icon fa fa-plus"><span></span></label>
+								<input type="input" id="new-recept" value="" />
+								<form action="javascript:sendForm()" method="post">
+									<div>
+										{{ range $key, $value := .Files }}
+											<label class="recept-file" content="{{ $value.Content }}">{{ $value.Name }}</label>
+										{{end}}
+										<div class="row">
+											<div class="12u$">
+												<textarea id="recept-textarea" name="recept-raw" placeholder="Message" rows="28"></textarea>
+											</div>
+											<div class="12u$">
+												<input type="submit" id="recept-file" value="Uppdatera" />
+											</div>
+										</div>
+									</div>
+								</form>
+							</article>
+
+							<!-- Pass-Gen -->
+							<article id="pass-gen" class="panel">
+								<header>
+									<h2>Password Generator</h2>
+								</header>
+								Soon to come...
+							</article>
+
+
+
+							<!-- Recepts -->
+							{{ range $key, $value := .Recepts }}
+							<article id="{{ $value.ID }}" class="panel">
+								<header>
+								<a href="#recept" class="jumplink pic">
+									<span class="arrow icon fa-arrow-left"></span>
+								</a>
+									<h2>{{ $value.Name }}</h2>
+									{{ $value.Description }}
+									<div class="6u 12u$(mobile)">									
+										<table class="recept-table">
+											<tr>
+												<td class="header">Mått</td>
+												<td class="header">Ingrediens</td>
+											</tr>
+											{{ range $k, $v := $value.Ingrediences }}
+												<tr>
+													{{if eq $v.Name ""}}
+														<td colspan="2"><i><b>{{ $v.Amount }}</b></i></td>
+													{{else}}
+														<td>{{ $v.Amount }}</td>
+														<td>{{ $v.Name }}</td>
+													{{end}}
+												</tr>
+											{{end}}
+										</table>										
+									</div>
+
+										<div>
+											<h3>Tillagning</h3>
+											<ul>
+												{{ range $k, $v := $value.Making }}
+													<li>{{ $v }}</li>
+													<hr />
+												{{end}}
+											</ul>
+
+											<h3>Noteringar</h3>
+											{{ range $k, $v := $value.Notes }}
+												{{ $v }}
+											{{end}}
+										</div>
+								</header>							
+							</article>
+							{{end}}
+
+							<!-- Viner -->
+							<article id="wine" class="panel">
+								<header>
+								Lista på goda viner...
+								</header>
+								
+							</article>
+
+
+
+					</div>
+
+				<!-- Footer -->
+					<div id="footer">
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/recources/js/jquery.min.js"></script>
+			<script src="/recources/js/skel.min.js"></script>
+			<script src="/recources/js/skel-viewport.min.js"></script>
+			<script src="/recources/js/util.js"></script>
+			<!--[if lte IE 8]><script src="/recources/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/recources/js/main.js"></script>
+			<script type="text/javascript" src="/recources/js/scripts.js"></script>
+
+	</body>
+</html>
+{{end}}

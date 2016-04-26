@@ -24,7 +24,7 @@ function sendForm() {
 	if (input != "") {
 		console.log( "SendForm - Request sent" );
 		var data = $("#recept-textarea").val();
-		var url = "http://localhost/saverecept";
+		var url = "http://localhost:8080/saverecept";
 		$.ajax({
 		  type: "POST",
 		  url: url,

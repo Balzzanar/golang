@@ -10,6 +10,7 @@ import (
 
 const LOGPATH string = "page.log"
 var templates = template.Must(template.ParseGlob("html/*"))
+const EIDTIPADDR string = "[::1]:53566"
 
 type Ingredience struct {
 	Name string
@@ -36,6 +37,7 @@ type Page struct {
 	Title string
 	Recepts []Recept 
 	Files []Files
+	Edit bool
 }
 
 /**
@@ -75,11 +77,19 @@ func parseRecept(raw []byte) Recept {
 
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	addr := r.RemoteAddr
+	log.Println("Addr: " + addr)
+	edit := true
+	if addr != EIDTIPADDR {
+		edit = true
+	}
+
 	recerpts, files := loadRecepts()
 	p := &Page{
 		Title: "Sphann, home page!",
 		Recepts: recerpts,
 		Files: files,
+		Edit: edit,
 	}
 
     err := templates.ExecuteTemplate(w, "home", p)
@@ -130,5 +140,5 @@ func main() {
 	http.HandleFunc("/saverecept", saveReceptHandler)
 
 	log.Printf("|Running...")
-	log.Fatal(http.ListenAndServe(":80", nil)) 
+	log.Fatal(http.ListenAndServe(":8080", nil)) 
 }

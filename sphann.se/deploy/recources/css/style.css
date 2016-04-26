@@ -1,0 +1,13 @@
+.header {
+	font-weight: bold;
+}
+.recept-table {
+	margin-top: 20px;
+}
+#contact .recept-file:hover {
+	cursor: hand;
+	background-color: #66ff33;
+}
+.enabled {
+	background-color: #8cff66;	
+}
