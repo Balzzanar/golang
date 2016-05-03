@@ -16,16 +16,20 @@ $( ".recept-file" ).click(function() {
 
 
 $( "#add-new-recept" ).click(function () {
-	sendForm();	
+	sendForm('new');	
 });
 //$ ( "#recept-file" ).click(sendForm());
 
-function sendForm() {
+function sendForm(new_recept) {
 	console.log( "SendForm" );
 	var input = $("#new-recept").val();
-	if (input != "") {
+	var data = $("#recept-textarea").val();
+	if (new_recept =! "" && input != ""){
+		data = '{"ID": "'+input+ '"}';
+	}
+	
 		console.log( "SendForm - Request sent" );
-		var data = $("#recept-textarea").val();
+		
 		var url = "http://localhost:8080/saverecept";
 		$.ajax({
 		  type: "POST",
@@ -34,8 +38,7 @@ function sendForm() {
 		  success: success,
 		  dataType: "text"
 		});
-	}	
-}
+	}
 
 function success(){
 	alert('done');
