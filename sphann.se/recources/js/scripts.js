@@ -15,7 +15,9 @@ $( ".recept-file" ).click(function() {
 });
 
 
-$( "#add-new-recept" ).click(sendForm());
+$( "#add-new-recept" ).click(function () {
+	sendForm();	
+});
 //$ ( "#recept-file" ).click(sendForm());
 
 function sendForm() {
