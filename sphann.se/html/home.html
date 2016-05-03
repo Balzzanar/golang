@@ -166,6 +166,9 @@
 								<header>
 									<h2>Edit</h2>
 								</header>
+								<p><b>Typer</b><br />
+									Julmat, Huvudrätt, Förrätt, Efterrätt, Dryck, Övrigt, Julgodis, Frukost
+								</p>
 								<label id="add-new-recept" class="icon fa fa-plus"><span></span></label>
 								<input type="input" id="new-recept" value="" />
 								<form action="javascript:sendForm()" method="post">
@@ -236,9 +239,11 @@
 											</ul>
 
 											<h3>Noteringar</h3>
+											<ul style="list-style-type:square">
 											{{ range $k, $v := $value.Notes }}
-												{{ $v }}
+												<li>{{ $v }}</li>
 											{{end}}
+											</ul>
 										</div>
 								</header>							
 							</article>
@@ -247,9 +252,16 @@
 							<!-- Viner -->
 							<article id="wine" class="panel">
 								<header>
-								Lista på goda viner...
+									<h2>Goda Viner</h2>
 								</header>
-								
+								<ul style="list-style-type:square">
+									<li>
+										<b>Fat Bastard</b> Nr 2281<br>
+										Mycket gott, och LCHF vänligt<br>
+										<a href="http://www.systembolaget.se/dryck/roda-viner/fat-bastard-228101">Sysbolaget</a>
+										
+									</li>
+								</ul>
 							</article>
 
 
