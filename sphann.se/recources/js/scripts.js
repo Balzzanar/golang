@@ -30,7 +30,7 @@ function sendForm(new_recept) {
 	
 		console.log( "SendForm - Request sent" );
 		
-		var url = "http://localhost:8080/saverecept";
+		var url = "http://sphann.se:8080/saverecept";
 		$.ajax({
 		  type: "POST",
 		  url: url,

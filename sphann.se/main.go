@@ -81,7 +81,7 @@ func parseRecept(raw []byte) Recept {
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	addr := r.RemoteAddr
 	addr = strings.Split(addr, ":")[0]
-	log.Println("Addr: " + addr)
+	log.Println("Addr: " + addr+ "jjj: "+ EIDTIPADDR)
 	edit := true
 	if addr != EIDTIPADDR {
 		edit = false
@@ -134,7 +134,7 @@ func initlog() {
 
 func loadConfig() {
 	b, _ := ioutil.ReadFile("config/allowed_ip")
-	EIDTIPADDR = string(b)
+	EIDTIPADDR = strings.TrimSpace(string(b))
 }
 
 func main() {
