@@ -24,7 +24,7 @@ function sendForm(new_recept) {
 	console.log( "SendForm" );
 	var input = $("#new-recept").val();
 	var data = $("#recept-textarea").val();
-	if (new_recept =! "" && input != ""){
+	if (new_recept == "new" && input != ""){
 		data = '{"ID": "'+input+ '"}';
 	}
 	
