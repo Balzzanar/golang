@@ -3,6 +3,7 @@ package main
 import (
 	"html/template"
 	"net/http"
+	"strings"
 	"log"
 	"io/ioutil"
 	"encoding/json"
@@ -10,7 +11,7 @@ import (
 
 const LOGPATH string = "page.log"
 var templates = template.Must(template.ParseGlob("html/*"))
-const EIDTIPADDR string = "[::1]:53566"
+const EIDTIPADDR string = "85.229.137.191"
 
 type Ingredience struct {
 	Name string
@@ -78,10 +79,11 @@ func parseRecept(raw []byte) Recept {
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	addr := r.RemoteAddr
+	addr = strings.Split(addr, ":")[0]
 	log.Println("Addr: " + addr)
 	edit := true
 	if addr != EIDTIPADDR {
-		edit = true
+		edit = false
 	}
 
 	recerpts, files := loadRecepts()
