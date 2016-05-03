@@ -21,7 +21,7 @@
 						<a href="#me" class="icon fa-home active"><span>Hem</span></a>
 						<a href="#recept" class="icon fa fa-spoon"><span>Recept</span></a>
 						{{ if .Edit }}
-							<a href="#contact" class="icon fa fa-pencil"><span>Editera Recept</span></a>
+							<a href="#edit" class="icon fa fa-pencil"><span>Editera Recept</span></a>
 						{{end}}
 						<a href="#wine" class="icon fa fa-glass"><span>Viner</span></a>
 						<a href="#pass-gen" class="icon fa fa-key"><span>Pass-Gen</span></a>
@@ -159,12 +159,12 @@
 							</article>
 
 
+						{{ if .Edit }}
 
-
-						<!-- Contact -->
-							<article id="contact" class="panel">
+						<!-- Edit -->
+							<article id="edit" class="panel">
 								<header>
-									<h2>Contact Me</h2>
+									<h2>Edit</h2>
 								</header>
 								<label id="add-new-recept" class="icon fa fa-plus"><span></span></label>
 								<input type="input" id="new-recept" value="" />
@@ -184,6 +184,9 @@
 									</div>
 								</form>
 							</article>
+							
+							{{ end }}
+
 
 							<!-- Pass-Gen -->
 							<article id="pass-gen" class="panel">

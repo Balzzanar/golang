@@ -11,7 +11,7 @@ import (
 
 const LOGPATH string = "page.log"
 var templates = template.Must(template.ParseGlob("html/*"))
-const EIDTIPADDR string = "85.229.137.191"
+var EIDTIPADDR string = ""
 
 type Ingredience struct {
 	Name string
@@ -40,6 +40,7 @@ type Page struct {
 	Files []Files
 	Edit bool
 }
+
 
 /**
  * loadRecepts
@@ -131,8 +132,14 @@ func initlog() {
 	log.SetFlags(log.Ltime|log.Lshortfile)
 }
 
+func loadConfig() {
+	b, _ := ioutil.ReadFile("config/allowed_ip")
+	EIDTIPADDR = string(b)
+}
+
 func main() {
 	initlog()
+	loadConfig()
 	
 	/* Enable fetching of files. */
 	resources := http.FileServer(http.Dir("./recources/"))
