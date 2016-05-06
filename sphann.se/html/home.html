@@ -247,22 +247,46 @@
 										</div>
 								</header>							
 							</article>
+
+							{{ if eq $value.ID "vinlista" }} 
+								<!-- Viner -->
+								<article id="wine" class="panel">
+									<header>
+										<h2>Viner</h2>
+										Sammling provsmakade viner...
+									</header>
+
+									<h3>Goda viner</h3><br />
+									<ul style="list-style-type:square">
+									{{ range $k, $wine := $value.Wines }}
+										{{ if eq $wine.GoodBad "good" }}
+											<li style="margin-left:20px;">
+												<b>{{$wine.Name}}</b> Nr. {{$wine.Number}}<br />
+												{{$wine.Notes}}<br />
+												<a href="{{$wine.Link}}">Systembolaget</a>
+											</li>
+											<hr />
+										{{end}}
+									{{end}}
+									</ul>
+
+									<h3>Viner som inte är värda att testa igen</h3><br />
+									<ul style="list-style-type:square">
+									{{ range $k, $wine := $value.Wines }}
+										{{ if eq $wine.GoodBad "bad" }}
+											<li style="margin-left:20px;">
+												<b>{{$wine.Name}}</b> Nr. {{$wine.Number}}<br />
+												{{$wine.Notes}}<br />
+												<a href="{{$wine.Link}}">Systembolaget</a>
+											</li>
+											<hr />
+										{{end}}
+									{{end}}
+									</ul>
+								</article>
+							{{end}}
 							{{end}}
 
-							<!-- Viner -->
-							<article id="wine" class="panel">
-								<header>
-									<h2>Goda Viner</h2>
-								</header>
-								<ul style="list-style-type:square">
-									<li>
-										<b>Fat Bastard</b> Nr 2281<br>
-										Mycket gott, och LCHF vänligt<br>
-										<a href="http://www.systembolaget.se/dryck/roda-viner/fat-bastard-228101">Sysbolaget</a>
-										
-									</li>
-								</ul>
-							</article>
 
 
 

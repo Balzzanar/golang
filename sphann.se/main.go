@@ -18,6 +18,14 @@ type Ingredience struct {
 	Amount string
 }
 
+type Wine struct {
+	Name string
+	Number string
+	GoodBad string
+	Notes string
+	Link string
+}
+
 type Recept struct {
 	ID string
 	Name string
@@ -27,6 +35,7 @@ type Recept struct {
 	Image string
 	Description string
 	Type string
+	Wines []Wine
 }
 
 type Files struct {
@@ -97,6 +106,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 
     err := templates.ExecuteTemplate(w, "home", p)
     if err != nil {
+		log.Fatal(err)
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
