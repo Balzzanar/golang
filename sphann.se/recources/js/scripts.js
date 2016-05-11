@@ -15,16 +15,22 @@ $( ".recept-file" ).click(function() {
 });
 
 
-$( "#add-new-recept" ).click(sendForm());
+$( "#add-new-recept" ).click(function () {
+	sendForm('new');	
+});
 //$ ( "#recept-file" ).click(sendForm());
 
-function sendForm() {
+function sendForm(new_recept) {
 	console.log( "SendForm" );
 	var input = $("#new-recept").val();
-	if (input != "") {
+	var data = $("#recept-textarea").val();
+	if (new_recept == "new" && input != ""){
+		data = '{"ID": "'+input+ '"}';
+	}
+	
 		console.log( "SendForm - Request sent" );
-		var data = $("#recept-textarea").val();
-		var url = "http://localhost/saverecept";
+		
+		var url = "http://sphann.se:8080/saverecept";
 		$.ajax({
 		  type: "POST",
 		  url: url,
@@ -32,8 +38,7 @@ function sendForm() {
 		  success: success,
 		  dataType: "text"
 		});
-	}	
-}
+	}
 
 function success(){
 	alert('done');

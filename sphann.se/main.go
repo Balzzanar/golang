@@ -3,6 +3,7 @@ package main
 import (
 	"html/template"
 	"net/http"
+	"strings"
 	"log"
 	"io/ioutil"
 	"encoding/json"
@@ -10,10 +11,19 @@ import (
 
 const LOGPATH string = "page.log"
 var templates = template.Must(template.ParseGlob("html/*"))
+var EIDTIPADDR string = ""
 
 type Ingredience struct {
 	Name string
 	Amount string
+}
+
+type Wine struct {
+	Name string
+	Number string
+	GoodBad string
+	Notes string
+	Link string
 }
 
 type Recept struct {
@@ -25,6 +35,7 @@ type Recept struct {
 	Image string
 	Description string
 	Type string
+	Wines []Wine
 }
 
 type Files struct {
@@ -36,7 +47,9 @@ type Page struct {
 	Title string
 	Recepts []Recept 
 	Files []Files
+	Edit bool
 }
+
 
 /**
  * loadRecepts
@@ -75,15 +88,25 @@ func parseRecept(raw []byte) Recept {
 
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	addr := r.RemoteAddr
+	addr = strings.Split(addr, ":")[0]
+	log.Println("Addr: " + addr+ "jjj: "+ EIDTIPADDR)
+	edit := true
+	if addr != EIDTIPADDR {
+		edit = false
+	}
+
 	recerpts, files := loadRecepts()
 	p := &Page{
 		Title: "Sphann, home page!",
 		Recepts: recerpts,
 		Files: files,
+		Edit: edit,
 	}
 
     err := templates.ExecuteTemplate(w, "home", p)
     if err != nil {
+		log.Fatal(err)
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
@@ -119,8 +142,14 @@ func initlog() {
 	log.SetFlags(log.Ltime|log.Lshortfile)
 }
 
+func loadConfig() {
+	b, _ := ioutil.ReadFile("config/allowed_ip")
+	EIDTIPADDR = strings.TrimSpace(string(b))
+}
+
 func main() {
 	initlog()
+	loadConfig()
 	
 	/* Enable fetching of files. */
 	resources := http.FileServer(http.Dir("./recources/"))
@@ -130,5 +159,5 @@ func main() {
 	http.HandleFunc("/saverecept", saveReceptHandler)
 
 	log.Printf("|Running...")
-	log.Fatal(http.ListenAndServe(":80", nil)) 
+	log.Fatal(http.ListenAndServe(":8080", nil)) 
 }
