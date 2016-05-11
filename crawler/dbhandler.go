@@ -30,9 +30,6 @@ func (this *DBHandler) Close () {
 
 
 
-
-
-
 type Resource struct {
 	Resource_id int
 	Url string
