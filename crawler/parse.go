@@ -94,6 +94,35 @@ func (this *Parse) parser_images() (func(token html.Token)) {
 	}
 }
 
+/*
+ * parser_links
+ *
+ * Site: General
+ * Collects a link given a token.
+ */
+func (this *Parse) parser_links() (func(token html.Token)) {
+	// TODO: Remove dubbles
+	// TODO: Add start url
+	return func(token html.Token) {
+		for _, attr := range token.Attr {
+			if strings.Contains(attr.Key, "href") {
+				link := attr.Val
+				if ! strings.Contains(link, "htt") {
+					link = this.StartUrl + link
+				}
+				if ! this.link_exists(link) {
+					this.Links = append(this.Links, link)
+				}
+			}
+		}		
+	}
+}
+
+func (this *Parse) parser_wish_images() (func(token html.Token)) {
+	// extra_photo_urls
+	// product_id
+}
+
 
 ///////////////////////////////// Special ////////////////////////////////////////////
 
@@ -110,4 +139,16 @@ func (this *Parse) fourchan_img_clean() {
 		images = append(images, img)
 	}
 	this.Images = images
+}
+
+
+///////////////////////////////// Help Functions ////////////////////////////////////////////
+
+func (this *Parse) link_exists(link string) bool {
+	for _, l := range this.Links {
+		if l == link {
+			return true
+		}
+	}
+	return false
 }

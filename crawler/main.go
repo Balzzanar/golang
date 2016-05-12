@@ -12,10 +12,11 @@ import (
 	"net/http"
 	"fmt"
 	"time"
-	"strconv"
+//	"strconv"
 	"io/ioutil"
 	"encoding/json"
 	"sync"
+	"log"
 )
 
 
@@ -31,19 +32,22 @@ var wg sync.WaitGroup
 
 
 func main() {
+	log.Println("Crawler started.")
 	if err := loadConfig(); err != nil {
 		panic("FAIL!, Failed to load config!")
 	}
+	log.Println("Config loaded.")
+	
 	dbh = new(DBHandler)
-	dbh.init()
-	defer dbh.Close()
+//	dbh.init()
+//	defer dbh.Close()
 
 	parse = new(Parse)
 	parse.init(config.StartUrl)
 
 	get_links(config.StartUrl)
 
-	fmt.Println("Getting images...")
+/*	fmt.Println("Getting images...")
 	for _,link := range parse.Links {
 		wg.Add(1)
 		go findImges(link, true)
@@ -52,12 +56,16 @@ func main() {
 	fmt.Println("Done!")
 	fmt.Println("Wating for goroutines...")
 	wg.Wait()
-
 	parse.fourchan_img_clean()
 	for _,i := range parse.Images {
 		fmt.Println(i.Url)
 	}
 	fmt.Printf("Totaly found %d images!\n", len(parse.Images))
+*/
+
+	for _, link := range parse.Links {
+		fmt.Println(link)
+	}
 }
 
 /*
@@ -66,10 +74,13 @@ func main() {
  * Gets all the links on the given page
  */
 func get_links(url string) {
-	for i := 1; i < 11; i++ {
-		resp, _ := http.Get(config.StartUrl + strconv.Itoa(i) + "/")
-		parse.Parse(resp, "a", parse.parser_fourchan_links())
-	}
+	resp, _ := http.Get(config.StartUrl)
+	parse.Parse(resp, "a", parse.parser_links())
+
+	// for i := 1; i < 11; i++ {
+	// 	resp, _ := http.Get(config.StartUrl + strconv.Itoa(i) + "/")
+	// 	parse.Parse(resp, "a", parse.parser_fourchan_links())
+	// }
 }
 
 func loadConfig() error {
