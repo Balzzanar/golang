@@ -62,7 +62,7 @@ func (this *DBHandler) Resource_geta() ([]*Resource, error) {
 	return resources, err
 }
 
-func (this *DBHandler) Resource_save (resource *Resource) (error) {
+func (this *DBHandler) Resource_save(resource *Resource) (error) {
 	this.lock.Lock()
 
 	query := "insert into resources (url, created) values(?, ?)"
