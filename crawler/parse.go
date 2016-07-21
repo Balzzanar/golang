@@ -2,7 +2,7 @@ package main
 
 import (
 	"golang.org/x/net/html"
-	"fmt"
+//	"fmt"
 	"net/http"
 	"strings"
 	 "strconv"
@@ -149,7 +149,7 @@ func (this *Parse) get_wish_products(resp *http.Response) {
  * Site: Avanza
  * Gets the current sellprice from a given httpResponse
  */
-func (this *Parse) avanza_get_sellprice(resp *http.Response) {
+func (this *Parse) avanza_get_sellprice(resp *http.Response) float64 {
 	z := html.NewTokenizer(resp.Body)
 
 	for {
@@ -157,14 +157,13 @@ func (this *Parse) avanza_get_sellprice(resp *http.Response) {
 
 	    switch {
 	    case tt == html.ErrorToken:
-	        return
+	        return 0.0
 	    case tt == html.StartTagToken:
 	        t := z.Token()
 	        
 	        if isCatch := t.Data == "span"; isCatch {
 				for _, attr := range t.Attr {
 					if strings.Contains(attr.Val, "sellPrice") {
-						fmt.Println(t.String());
 						z.Next();
 						tt := z.Token();
 						strval := strings.Replace(tt.String(), ",", ".", -1);
