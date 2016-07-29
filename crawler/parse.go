@@ -5,7 +5,7 @@ import (
 //	"fmt"
 	"net/http"
 	"strings"
-	// "strconv"
+	 "strconv"
 )
 
 type Image struct {
@@ -118,10 +118,6 @@ func (this *Parse) parser_links() (func(token html.Token)) {
 	}
 }
 
-func (this *Parse) parser_wish_images() (func(token html.Token)) {
-	// extra_photo_urls
-	// product_id
-}
 
 
 ///////////////////////////////// Special ////////////////////////////////////////////
@@ -141,6 +137,44 @@ func (this *Parse) fourchan_img_clean() {
 	this.Images = images
 }
 
+
+func (this *Parse) get_wish_products(resp *http.Response) {
+	
+}
+
+
+/*
+ * avanza_get_sellprice
+ *
+ * Site: Avanza
+ * Gets the current sellprice from a given httpResponse
+ */
+func (this *Parse) avanza_get_sellprice(resp *http.Response) float64 {
+	z := html.NewTokenizer(resp.Body)
+
+	for {
+	    tt := z.Next()
+
+	    switch {
+	    case tt == html.ErrorToken:
+	        return 0.0
+	    case tt == html.StartTagToken:
+	        t := z.Token()
+	        
+	        if isCatch := t.Data == "span"; isCatch {
+				for _, attr := range t.Attr {
+					if strings.Contains(attr.Val, "sellPrice") {
+						z.Next();
+						tt := z.Token();
+						strval := strings.Replace(tt.String(), ",", ".", -1);
+						value, _ := strconv.ParseFloat(strval, 64)
+						return value;
+					}
+				}	
+	        }
+	    }
+	}	
+}
 
 ///////////////////////////////// Help Functions ////////////////////////////////////////////
 
