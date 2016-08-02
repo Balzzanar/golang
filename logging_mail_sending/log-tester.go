@@ -4,36 +4,60 @@ import (
     "github.com/apsdehal/go-logger"
     "github.com/go-gomail/gomail"
     "os"
+    "io/ioutil"
+    "flag"
+    "fmt"
+    "errors"
 )
 
 var log *logger.Logger
+var filename *string
 
 func main () {
-    var errr error
-    log, errr = logger.New("woop", 1, os.Stdout)
-    if errr != nil {
-        panic(errr) // Check for error
+    var err error
+    log, err = logger.New("woop", 1, os.Stdout)
+    if err != nil {
+        panic(err) 
     }
 
+    if err = init_args(); err != nil {
+    	panic(fmt.Sprintf("Bad argument input! (%s)\nuse '--help' to get a list of arguments", err))
+    }
+    log.Info("Reading file...")
+    content := read_file(*filename)
     log.Info("Sending mail...")
-    send_mail()
+  	send_mail(content)
+  	log.Info("Mail sent!")
+}
+
+func init_args() error {
+	var result error 
+	filename = flag.String("f", "", "Filename of the result file, that shall be mailed")
+	flag.Parse()
+	if _, err := os.Stat(*filename); os.IsNotExist(err) {
+ 		log.Error(fmt.Sprintf("The file '%s' does not exist!", *filename))
+		result = errors.New("missing filelocation")
+	}
+	return result
+}
+
+func read_file(filename string) []byte {
+	content,_ := ioutil.ReadFile(filename)
+	return content
 }
 
 
-
-func send_mail(){
+func send_mail(content []byte) {
 	m := gomail.NewMessage()
 	m.SetHeader("From", "toby.tooth@mail.com")
-	m.SetHeader("To", "toby.tooth@mail.com", "toby.tooth+1@mail.com")
+	m.SetHeader("To", "spann.johan@gmail.com")
 	m.SetHeader("Subject", "Hello!")
-	m.SetBody("text/html", "Hello <b>Toby</b> and <i>Toby +1</i>!")
-
+	m.SetBody("text/html", 
+		"<h1>Result</h1>" + 
+		"<p>"+ string(content) +"</p>")
 	d := gomail.NewDialer("smtp.mail.com", 465, "toby.tooth@mail.com", "****")
-
-	// Send the email to Bob, Cora and Dan.
 	if err := d.DialAndSend(m); err != nil {
 		log.Error("Mail send faild!")
-	    panic(err)
+	    panic(fmt.Sprintf("Mailing failed! (%s)", err))
 	}
-	log.Info("Mail sent!")
 }
