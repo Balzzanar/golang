@@ -4,16 +4,18 @@ import (
     "github.com/apsdehal/go-logger"
     "os"
     "time"
-//    "fmt"
+    "fmt"
 //    "io/ioutil"
 //    "flag"
 //    "errors"
 )
 
 /* -- Constants -- */
-const LEDOFF 	= 0
-const LEDON 	= 1
-const LEDBLINK 	= 2
+const LEDOFF 		= 0
+const LEDON 		= 1
+const LEDBLINK 		= 2
+const DIRWORDLIST	= "wordlist"
+const DIRWPA		= "tocrack"
 
 var log *logger.Logger
 var LEDStatus int  /*  0 - off, 1 - on, 2 - blinking  */
@@ -35,6 +37,9 @@ func main () {
     dbh.Init()
     defer dbh.Close()
 
+    dbh.StoreWordlist(&Wordlist{id:0, name:"rockyou.txt", size:"143MB", avg_run:30012313})
+    dbh.GetAllWpa()
+    ScanUpdate()
     LEDController()
 }
 
@@ -75,4 +80,55 @@ func LEDBlink(NumBlinks int) {
 	}
 	log.Info("Blinking..")
 	time.Sleep(1 * time.Second)
+}
+
+
+/**
+ * Scans and updates the database file based on what 
+ * files are found.
+ * 
+ * @name ScanUpdate
+ */
+func ScanUpdate() {
+    d, err := os.Open(DIRWPA)
+    if err != nil {
+        fmt.Println(err)
+        os.Exit(1)
+    }
+    defer d.Close()
+    fi, err := d.Readdir(-1)
+    if err != nil {
+        fmt.Println(err)
+        os.Exit(1)
+    }
+    for _, fi := range fi {
+        if fi.Mode().IsRegular() {
+            fmt.Println(fi.Name(), fi.Size())
+        }
+    }
+}
+
+/**
+ * Scans a given directory and returns a list of 
+ * all the files.
+ * 
+ * @name scanDir
+ */
+func scanDir(dir string) []file {
+    d, err := os.Open(dir)
+    if err != nil {
+        fmt.Println(err)
+        os.Exit(1)
+    }
+    defer d.Close()
+    fi, err := d.Readdir(-1)
+    if err != nil {
+        fmt.Println(err)
+        os.Exit(1)
+    }
+    for _, fi := range fi {
+        if fi.Mode().IsRegular() {
+            fmt.Println(fi.Name(), fi.Size())
+        }
+    }
 }

@@ -10,6 +10,8 @@ import (
 const TABLE_WPA = `create table if not exists wpa (id integer not null primary key, name text, bssid varchar(30));`
 const TABLE_WORDLISTS = `create table if not exists wordlists (id integer not null primary key, name text, size varchar(10), avg_run int);`
 const TABLE_RUNS = `create table if not exists runs (id_wpa int, id_wordlist, result text, time int, started int);`
+const DB_FILE_NAME = "./list.db"
+
 
 type Wordlist struct {
 	id int
@@ -18,11 +20,16 @@ type Wordlist struct {
 	avg_run int
 }
 
-
+type Wpa struct {
+	id int
+	name string
+	bssid string
+}
 
 type DBHandler struct {
 	db *sql.DB
 }
+
 
 /**
  * Opens a connection to the databasefile, creates one if it does not exits
@@ -31,7 +38,7 @@ type DBHandler struct {
  */
 func (this *DBHandler) Init() {
 	var derr error
-	this.db, derr = sql.Open("sqlite3", "./foo.db")
+	this.db, derr = sql.Open("sqlite3", DB_FILE_NAME)
 	if derr != nil {
 		fmt.Println(derr)
 	}
@@ -56,8 +63,74 @@ func (this *DBHandler) Close() {
  * 
  * @name StoreWordlist
  */
-func (this *DBHandler) StoreWordlist() {
+func (this *DBHandler) StoreWordlist(wordlist *Wordlist) {
+	tx, err := this.db.Begin()
+	if err != nil {
+		fmt.Println(err)
+	}
+	stmt, err := tx.Prepare("insert into wordlists(id, name, size, avg_run) values(null, ?, ?, ?)")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec(wordlist.name, wordlist.size, wordlist.avg_run)
+	if err != nil {
+		fmt.Println(err)
+	}
+	tx.Commit()
+}
 
+
+/**
+ * Gets a list with all the knows wpas.
+ * 
+ * @name GetAllWpa
+ * @return []Wpa
+ */
+func (this *DBHandler) GetAllWpa() []Wpa {
+	listwpa := []Wpa{}
+	rows, err := this.db.Query("select * from wpa")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var wpa Wpa
+		err = rows.Scan(&wpa.id, &wpa.name, &wpa.bssid)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Printf("ID: %d\n", wpa.id)
+		listwpa = append(listwpa, wpa)
+	}
+	err = rows.Err()
+	if err != nil {
+		fmt.Println(err)
+	}
+	return listwpa
+}
+
+
+/**
+ * Stores a new Wpa to the database file
+ * 
+ * @name StoreWpa
+ */
+func (this *DBHandler) StoreWpa(wpa *Wpa) {
+	tx, err := this.db.Begin()
+	if err != nil {
+		fmt.Println(err)
+	}
+	stmt, err := tx.Prepare("insert into wpa(id, name, bssid) values(null, ?, ?)")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec(wpa.name, wpa.bssid)
+	if err != nil {
+		fmt.Println(err)
+	}
+	tx.Commit()
 }
 
 
