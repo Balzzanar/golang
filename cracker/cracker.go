@@ -5,7 +5,8 @@ import (
     "os"
     "time"
     "fmt"
-//    "io/ioutil"
+    "strings"
+    "io/ioutil"
 //    "flag"
 //    "errors"
 )
@@ -14,8 +15,8 @@ import (
 const LEDOFF 		= 0
 const LEDON 		= 1
 const LEDBLINK 		= 2
-const DIRWORDLIST	= "wordlist"
-const DIRWPA		= "tocrack"
+const DIRWORDLIST	= "wordlist/"
+const DIRWPA		= "tocrack/"
 
 var log *logger.Logger
 var LEDStatus int  /*  0 - off, 1 - on, 2 - blinking  */
@@ -90,23 +91,21 @@ func LEDBlink(NumBlinks int) {
  * @name ScanUpdate
  */
 func ScanUpdate() {
-    d, err := os.Open(DIRWPA)
-    if err != nil {
-        fmt.Println(err)
-        os.Exit(1)
-    }
-    defer d.Close()
-    fi, err := d.Readdir(-1)
-    if err != nil {
-        fmt.Println(err)
-        os.Exit(1)
-    }
-    for _, fi := range fi {
-        if fi.Mode().IsRegular() {
-            fmt.Println(fi.Name(), fi.Size())
+    flist := scanDir(DIRWPA)
+    var err error
+    for _,file := range flist {
+        if strings.Contains(file.Name(), ".cap") {
+            var bssid []byte
+            bssidfile := DIRWPA + strings.Split(file.Name(), ".")[0] + ".bssid"
+            if bssid, err = ioutil.ReadFile(bssidfile); err != nil {
+                log.Error(fmt.Sprintf("Missing file: %s", bssidfile))
+            }
+            log.Info(fmt.Sprintf("Found bssid: %s", bssid))
+            dbh.StoreWpa(&Wpa{name:file.Name(), bssid:string(bssid)})
         }
     }
 }
+
 
 /**
  * Scans a given directory and returns a list of 
@@ -114,7 +113,8 @@ func ScanUpdate() {
  * 
  * @name scanDir
  */
-func scanDir(dir string) []file {
+func scanDir(dir string) []os.FileInfo {
+    files := []os.FileInfo{}
     d, err := os.Open(dir)
     if err != nil {
         fmt.Println(err)
@@ -128,7 +128,8 @@ func scanDir(dir string) []file {
     }
     for _, fi := range fi {
         if fi.Mode().IsRegular() {
-            fmt.Println(fi.Name(), fi.Size())
+            files = append(files, fi)
         }
     }
+    return files
 }

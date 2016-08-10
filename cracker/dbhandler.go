@@ -113,10 +113,16 @@ func (this *DBHandler) GetAllWpa() []Wpa {
 
 /**
  * Stores a new Wpa to the database file
+ * Will enforce uniqeness on name.
  * 
  * @name StoreWpa
  */
 func (this *DBHandler) StoreWpa(wpa *Wpa) {
+	if ! this.isWpaUniqe(wpa.name) {
+		log.Info(fmt.Sprintf("Wpa (%s) already exists, ignoring.", wpa.name))
+		return
+	}
+
 	tx, err := this.db.Begin()
 	if err != nil {
 		fmt.Println(err)
@@ -147,3 +153,27 @@ func (this *DBHandler) createNewTable(tablescript string) {
 	}
 }
 
+
+
+/**
+ * Checks if the given wpa name is uniqe
+ * 
+ * @name isWpaUniqe
+ * @return bool
+ */
+func (this *DBHandler) isWpaUniqe(name string) bool {
+	stmt, err := this.db.Prepare("select count(*) from wpa where name = ?")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer stmt.Close()
+	var count int
+	err = stmt.QueryRow(name).Scan(&count)
+	if err != nil {
+		fmt.Println(err)
+	}
+	if count > 0 {
+		return false
+	}
+	return true
+}
