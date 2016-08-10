@@ -1,0 +1,763 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Gam",
+				"GameLoop"
+			],
+			[
+				"io",
+				"ioutil"
+			],
+			[
+				"so",
+				"stores"
+			],
+			[
+				"log",
+				"logger"
+			],
+			[
+				"array_k",
+				"array_key_exists"
+			],
+			[
+				"p",
+				"phonebook"
+			],
+			[
+				"handl",
+				"handle_input"
+			],
+			[
+				"fun",
+				"fun	function …"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"func",
+				"func	php-function"
+			],
+			[
+				"gra",
+				"grapth_setup"
+			],
+			[
+				"lin",
+				"link_exists"
+			],
+			[
+				"revi",
+				"REVISION"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"p_",
+				"p_ix"
+			],
+			[
+				"_i",
+				"_itr"
+			],
+			[
+				"_res",
+				"_result"
+			],
+			[
+				"q",
+				"_query"
+			],
+			[
+				"con",
+				"continue"
+			],
+			[
+				"_it",
+				"_item_id"
+			],
+			[
+				"rev_t",
+				"rev_type"
+			],
+			[
+				"item",
+				"item_id"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"bw",
+				"browser"
+			],
+			[
+				"branch",
+				"BRNACH"
+			],
+			[
+				"bra",
+				"branches"
+			],
+			[
+				"S",
+				"SITES_PATH"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"php",
+				"phpinfo"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"cur",
+				"current_branch"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Board.go",
+			"settings":
+			{
+				"buffer_size": 2123,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "BoardHandler.go",
+			"settings":
+			{
+				"buffer_size": 1973,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test-input.go",
+			"settings":
+			{
+				"buffer_size": 237,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"plug",
+				"Plugin Development: Profile Events"
+			],
+			[
+				"commen",
+				"Toggle Block Comment"
+			],
+			[
+				"book",
+				"Bookmarks: Clear All"
+			],
+			[
+				"unfo",
+				"Code Folding: Unfold All"
+			],
+			[
+				"fold le",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"fold",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"side",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"build",
+				"Build: Cancel"
+			]
+		],
+		"width": 440.0
+	},
+	"console":
+	{
+		"height": 118.0,
+		"history":
+		[
+			"time",
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/sphann/Codez/Golang/src/golang/battleship"
+	],
+	"file_history":
+	[
+		"/home/sphann/Codez/Golang/src/golang/battleship/test-input.go",
+		"/home/sphann/bin/note",
+		"/etc/apache2/sites-available/222360_johsph_bwadmin_3.15.10.conf",
+		"/home/sphann/Codez/Golang/src/golang/logging_mail_sending/log-tester.go",
+		"/home/sphann/Downloads/pre_postbuffer/run.php",
+		"/home/sphann/Downloads/pre_postbuffer/error.log",
+		"/home/sphann/Downloads/pre_postbuffer/device.txt",
+		"/home/sphann/Downloads/pre_postbuffer/debug.log",
+		"/home/sphann/Downloads/pre_postbuffer/common.php",
+		"/home/sphann/Codez/Golang/src/golang/useragent_regexp/useragent_regexp.go",
+		"/home/sphann/Codez/Golang/src/golang/regexp-test/useragent_regexp.go",
+		"/home/sphann/Codez/Golang/src/golang/note/log-tester.go",
+		"/home/sphann/Codez/Golang/src/golang/regtest/regtest.go",
+		"/home/sphann/Codez/Golang/src/golang/note/main.go",
+		"/home/sphann/Codez/Golang/src/golang/regtest/inputdata_redit",
+		"/home/sphann/Codez/adminstuff/scripts/mail/test-mail.php",
+		"/home/sphann/Codez/Golang/src/golang/crawler/main.go",
+		"/var/www/html/index.html",
+		"/srv/sites/BWP/branches/225206_johsph_release_3.15.10/application/controllers/login.php",
+		"/srv/sites/BWP/branches/225206_johsph_release_3.15.10/application/language/en-us/messages.php",
+		"/srv/sites/BWP/branches/225206_johsph_release_3.15.10/application/language/sv-se/messages.php",
+		"/srv/sites/BWP/branches/225206_johsph_release_3.15.10/application/views/welcome/top.php",
+		"/srv/sites/BWP/branches/225206_johsph_release_3.15.10/application/views/welcome/content.php",
+		"/srv/sites/BWP/branches/225206_johsph_release_3.15.10/application/controllers/welcome.php",
+		"/srv/sites/BWAPI4/branches/186564_johsph_release_4.16.06/application/models/rss_model.php",
+		"/srv/sites/BWAPI4/branches/186564_johsph_release_4.16.06/application/libraries/rs_controller.php",
+		"/srv/sites/BWAPI4/branches/186564_johsph_release_4.16.06/application/controllers/installations.php",
+		"/home/sphann/Codez/SDS/sybase-client.php",
+		"/home/sphann/Codez/SDS/SVN/dataupdate/data_branch.php",
+		"/home/sphann/Codez/adminstuff/scripts/branch_setup/set_up_branch.sh",
+		"/home/sphann/.purple/accounts.xml",
+		"/home/sphann/Codez/Golang/src/golang/sphann.se/BaseAngularSite-Route/html/index.html",
+		"/home/sphann/Codez/Golang/src/golang/sphann.se/BaseAngularSite-Route/js/config.js",
+		"/home/sphann/Codez/Golang/src/golang/sphann.se/BaseAngularSite-Route/js/controllers.js",
+		"/var/www/html/js/ia/store/CardDataStore.js",
+		"/var/www/html/js/ia/view/Viewport.js",
+		"/var/www/html/js/ia/model/CardDataModel.js",
+		"/var/www/html/js/ia/view/CardList.js",
+		"/var/www/html/index.php",
+		"/var/www/html/doc/readme.md",
+		"/var/www/html/js/ia/app.js",
+		"/var/www/html/js/ia/controller/CardDataController.js",
+		"/var/www/html/data.php",
+		"/var/www/html/sql/project.sql",
+		"/var/www/html/php/CardModel.php",
+		"/home/sphann/Codez/IntelliAD/README.md",
+		"/home/sphann/Codez/IntelliAD/intelliAd-TechTest-Frontend-GymnCardReservation-Small/index.php",
+		"/home/sphann/Codez/IntelliAD/db-test.php",
+		"/home/sphann/Codez/hackerrank/Done/30days/Arrays.php",
+		"/home/sphann/Codez/hackerrank/Inprogress/30Days/DictionariesAndMaps_test_000",
+		"/home/sphann/Codez/hackerrank/Inprogress/30Days/DictionariesAndMaps.php",
+		"/home/sphann/Codez/hackerrank/Template.php",
+		"/home/sphann/Codez/hackerrank/Inprogress/30Days/Arrays.php",
+		"/home/sphann/Codez/hackerrank/Done/Algorithms/AngryProfessor.php",
+		"/home/sphann/Codez/hackerrank/Inprogress/30Days/LetsReview.php",
+		"/home/sphann/Codez/hackerrank/Inprogress/30Days/Review.php",
+		"/home/sphann/Codez/hackerrank/Inprogress/30Days/README.md",
+		"/home/sphann/Codez/Hackerrank/CrabGraphs.php",
+		"/srv/sites/BWInst/trunk/assets/js/system_configuration.js",
+		"/srv/sites/BWInst/trunk/assets/js/add_component.js",
+		"/srv/sites/BWAPI4/branches/211276_jonhan_211120/application/models/cameras_model.php",
+		"/home/sphann/Codez/SDS/deploy-scripts/pack-bwsales.sh",
+		"/home/sphann/Codez/SDS/deploy-scripts/deploy_sq.sh",
+		"/home/sphann/Codez/SDS/deploy-scripts/pack-sd8100comm.sh",
+		"/home/sphann/Codez/SDS/deploy-scripts/pack-bwcommon.sh",
+		"/home/sphann/Codez/SDS/deploy-scripts/pack-bwinst.sh",
+		"/home/sphann/Codez/SDS/deploy-scripts/pack-bwapi4.sh",
+		"/home/sphann/Codez/SDS/deploy-scripts/pack-alivetracker.sh",
+		"/home/sphann/Codez/SDS/deploy-scripts/pack-bwp.sh",
+		"/srv/sites/BWAPI4/trunk",
+		"/home/sphann/Codez/SDS/branching/recources/css/style.css",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_service_request_status_upd.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_service_request_status_add.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_alive_tracker_set_poll.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_pending_codechange_add.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_sd8100_action_add.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_sd8100_action_upd.sql",
+		"/srv/sites/BWSql/BWS/trunk/tables/tbl_service_request_status.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_service_request_status_get.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_alive_tracker_set_ping.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_pending_codechange_set_sent.sql",
+		"/srv/sites/BWSql/BWS/trunk/tables/tbl_sd81oo_actions.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_sd8100_panel_add.sql",
+		"/srv/sites/BWSql/BWS/trunk/procedures/pro_sd8100_cancel_action.sql",
+		"/srv/sites/BWSql/BWS/trunk/tables/tbl_msg_queue.sql",
+		"/srv/sites/BWAPI4/branches/211276_jonhan_211120/application/config/constants.php",
+		"/srv/sites/BWSales/tags/release_1.16.03/application/controllers/quotation.php",
+		"/srv/sites/BWSales/tags/release_1.16.03/application/models/quotation_model.php",
+		"/home/sphann/Downloads/result.log",
+		"/home/sphann/Downloads/success.log",
+		"/home/sphann/.config/sublime-text-3/Packages/User/pluginn.py",
+		"/srv/sites/BWSales/tags/release_1.16.03/application/models/quotationtexts_model.php",
+		"/home/sphann/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/sphann/.config/sublime-text-3/Packages/User/random-stuff.sublime-build",
+		"/srv/sites/BWP/branches/bwp_3.15.10/application/controllers/users.php",
+		"/srv/sites/BWP/branches/bwp_3.15.10/application/config/environment/dev/config.php",
+		"/srv/sites/BWCommon/branches/bwcommon_1.15.10/helpers/sms_helper.php",
+		"/srv/sites/SD8100Comm/branches/sd8100comm_1.15.10/config.ini",
+		"/srv/sites/BWCommon/branches/bwcommon_1.15.10/config/dev/config.php",
+		"/srv/sites/SD8100Comm/branches/sd8100comm_1.15.10/sd8100Comm.php",
+		"/home/sphann/Documents/daily-notes/160322",
+		"/srv/sites/BWCommon/branches/bwcommon_1.15.10/helpers/rpsms_helper.php",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211771/public/js/main.js",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211875/application/libraries/tcpdf/config/tcpdf_config.php",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211875/application/libraries/tcpdf/tcpdf.php",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211771/offline.appcache",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211875/application/libraries/tcpdf/tcpdf_autoconfig.php",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211875/application/libraries/tcpdf/CHANGELOG.TXT",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211771/index.php",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211771/public/js/offline.js",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211771/.htaccess",
+		"/srv/sites/BWSales/branches/release_11603_johsph_211771/application/views/templates/main.php",
+		"/srv/sites/BWSales/tags/release_1.16.02/system/core/CodeIgniter.php",
+		"/home/sphann/Codez/SDS/codeigniter-fixes/sybase_driver.php",
+		"/home/sphann/Codez/adminstuff/scripts/branch_setup/codeigniter-fixes.sh",
+		"/home/sphann/Codez/SDS/codeigniter-fixes/Common.php",
+		"/home/sphann/Codez/SDS/codeigniter-fixes/database.php",
+		"/home/sphann/Codez/SDS/codeigniter-fixes/index.php",
+		"/home/sphann/Codez/SDS/codeigniter-fixes/Curl.php",
+		"/home/sphann/Codez/Golang/src/branching/deploy/html/home.html",
+		"/srv/sites/BWSales/tags/release_1.16.02/index.php",
+		"/srv/sites/BWSales/tags/release_1.16.02/application/controllers/companies.php",
+		"/srv/sites/BWSales/tags/release_1.16.02/application/config/dev/database.php",
+		"/home/sphann/Codez/adminstuff/scripts/codeigniter-fixes.sh",
+		"/home/sphann/Codez/adminstuff/scripts/bwsales-release.sec.intra.conf",
+		"/etc/apache2/sites-available/bwsales-release.sec.intra.conf",
+		"/srv/sites/BWSales/tags/release_1.16.02/application/libraries/Common_digisapp.php",
+		"/srv/sites/BWSales/tags/release_1.16.02/system/database/drivers/sybase/sybase_driver.php"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/srv/sites/BWAPI4/branches/161941_johsph_release_4.16.06/application",
+			"/srv/sites/BWAPI4/branches/186564_johsph_release_4.16.06/application",
+			"/srv/sites/BWAPI/branches/203473_johsph_bwapi_3.15.10/application",
+			"/srv/sites/BWAPI4/branches/161941_johsph_release_4.16.06/application",
+			"/srv/sites/BWP/branches/203473_johsph_release_3.15.10/application",
+			"/srv/sites/BWAPI4/branches/211276_jonhan_211120",
+			"/srv/sites/BWInst/trunk/assets",
+			"/srv/sites/BWInst/trunk/assets/js",
+			"/srv/sites/BWAPI4/branches/211276_jonhan_211120",
+			"/srv/sites/BWAPI4/branches/211276_jonhan_211120/application/controllers",
+			"/srv/sites/BWAPI4/branches/211276_jonhan_211120",
+			"/srv/sites/BWAPI4/branches/211276_jonhan_211120/application",
+			"/srv/sites/BWSql/BWS/trunk/procedures",
+			"/srv/sites/BWSql/BWS/trunk/tables",
+			"/srv/sites/BWSql/BWS/trunk/procedures",
+			"/srv/sites/BWSql/BWS/trunk/tables",
+			"/srv/sites/BWAPI4/branches/211276_jonhan_211120/application/config",
+			"/srv/sites/BWSales/tags/release_1.16.03/application/controllers",
+			"/srv/sites/BWSales/tags/release_1.16.03",
+			"/srv/sites/SD8100Comm/branches/sd8100comm_1.15.10",
+			"/srv/sites/BWCommon/branches/bwcommon_1.15.10",
+			"/srv/sites/SD8100Comm/branches/sd8100comm_1.15.10",
+			"/srv/sites/BWAPI/branches/bwapi_4.15.10/application",
+			"/srv/sites/BWSales/branches/release_11603_johsph_211875/application/libraries/tcpdf",
+			"/srv/sites/BWSales/branches/release_11603_johsph_211875",
+			"/srv/sites/BWSales/branches/digisapp_1.15.12",
+			"/srv/sites/BWSales/branches/release_11603_johsph_211771",
+			"/home/sphann/Codez/Golang/src/branching",
+			"/srv/sites/BWSales/tags/release_1.16.02",
+			"/srv/sites/BWSales/tags/release_1.16.02/application",
+			"/srv/sites/BWAPI/trunk4",
+			"/srv/sites/BWAPI/trunk4/application",
+			"/srv/sites/BWAPI/trunk4",
+			"/srv/sites/BWAPI/trunk4/application",
+			"/srv/sites/BWAPI/trunk4",
+			"/srv/sites/BWAPI",
+			"/srv/sites/BWAPI/trunk4",
+			"/srv/sites/BWAPI/trunk4/system"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"response",
+			"die('done');",
+			"done",
+			"img src=\"//b",
+			">\n",
+			"request_methods",
+			"todo",
+			"eth",
+			"_create_pending_change",
+			"set_sequence",
+			"$this->config->item",
+			"complete_read",
+			"hash_password",
+			"set_password",
+			"rest_put('registration",
+			"rest_post('registration",
+			"});",
+			"product_rating",
+			"vru",
+			"validate()",
+			"validate();",
+			"validate()",
+			"validate",
+			"save_component",
+			"->_get_components",
+			"function _get_compon",
+			"get_components",
+			"->get_components",
+			"->_get($ins_id)",
+			"function _get(",
+			"function rest_get(",
+			"->_get($ins_id)",
+			"function _get(",
+			"function _get",
+			"_get",
+			"->_get",
+			"_get",
+			"skynet",
+			"rollback",
+			"(select",
+			"exists",
+			"upda",
+			"v_msg",
+			"sd8100_actions",
+			"enum",
+			"null",
+			"enum",
+			"regulations",
+			"service",
+			"saleID",
+			"update_quotation",
+			"saleID",
+			"sale",
+			"sale_id",
+			"Update failed, logged in user differs from seller of this quotation",
+			");\n",
+			"Update failed, logged in user differs from seller of this quotation",
+			"2",
+			"get_new_rev_type_id",
+			"QUERY",
+			"get_new_rev_type_id2",
+			"get_new_rev_type_id",
+			"rev_lookup",
+			"get_new_rev_type_id",
+			"133",
+			"seco",
+			"cycle_fees",
+			"select",
+			"items",
+			"rev_lookup",
+			"get_new_rev_type_id",
+			"get_contracts",
+			"sms",
+			"rpsms",
+			"RPSMS",
+			",",
+			"sms",
+			"sbn_connection",
+			"inxobj",
+			"tcpdf",
+			"applicationCache",
+			"appcache_progressbar",
+			"$browser",
+			"cache",
+			"digisapp",
+			"cache",
+			"CurrentBranch",
+			"is_primary",
+			"cas_check",
+			"Database Driver Class Initialized",
+			"var_dump",
+			"initialize(",
+			"backtrace",
+			"CI_Controller",
+			"Controller Class Init",
+			"controller class init",
+			"controller class",
+			"rs_initialize",
+			"database(",
+			"Database driver",
+			"Database ini",
+			"database(",
+			"DB(",
+			"DB",
+			"_get_raw_services",
+			"services",
+			"is_primary",
+			"is not primary",
+			"$this->conn_id",
+			"DB(",
+			"function DB(",
+			"function database(",
+			"function database",
+			"database",
+			"Unable to establish database connection",
+			"Unable to connect",
+			"(){\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"reason",
+			"prim"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Board.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2123,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								645,
+								645
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Go/Go.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 357.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "BoardHandler.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1973,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1973,
+								1973
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Go/Go.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 833.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "test-input.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 237,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								155,
+								155
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Go/Go.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "Board.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"login",
+				"application/controllers/login.php"
+			],
+			[
+				"welcom",
+				"application/controllers/welcome.php"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"config",
+				"application/config/environment/dev/config.php"
+			],
+			[
+				"sw",
+				"sh/switch.sh"
+			],
+			[
+				"main",
+				"main.go"
+			],
+			[
+				"sacve",
+				"procedures/pro_servicerequests_pcr_save.sql"
+			],
+			[
+				"pro_servicerequests_pcr_get.sql",
+				"procedures/pro_servicerequests_pcr_get.sql"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 438.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 333.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 683.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 323.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
