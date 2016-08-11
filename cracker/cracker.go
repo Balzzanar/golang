@@ -91,8 +91,9 @@ func LEDBlink(NumBlinks int) {
  * @name ScanUpdate
  */
 func ScanUpdate() {
-    flist := scanDir(DIRWPA)
     var err error
+
+    flist := scanDir(DIRWPA)
     for _,file := range flist {
         if strings.Contains(file.Name(), ".cap") {
             var bssid []byte
@@ -103,6 +104,11 @@ func ScanUpdate() {
             log.Info(fmt.Sprintf("Found bssid: %s", bssid))
             dbh.StoreWpa(&Wpa{name:file.Name(), bssid:string(bssid)})
         }
+    }
+
+	flist = scanDir(DIRWORDLIST)
+    for _,file := range flist {
+        dbh.StoreWordlist(&Wordlist{name:file.Name(), size:string(file.Size()), avg_run:0})
     }
 }
 

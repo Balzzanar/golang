@@ -64,6 +64,11 @@ func (this *DBHandler) Close() {
  * @name StoreWordlist
  */
 func (this *DBHandler) StoreWordlist(wordlist *Wordlist) {
+	if ! this.isWordlistUniqe(wordlist.name) {
+		log.Info(fmt.Sprintf("Wordlist (%s) already exists, ignoring.", wordlist.name))
+		return
+	}
+
 	tx, err := this.db.Begin()
 	if err != nil {
 		fmt.Println(err)
@@ -163,6 +168,30 @@ func (this *DBHandler) createNewTable(tablescript string) {
  */
 func (this *DBHandler) isWpaUniqe(name string) bool {
 	stmt, err := this.db.Prepare("select count(*) from wpa where name = ?")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer stmt.Close()
+	var count int
+	err = stmt.QueryRow(name).Scan(&count)
+	if err != nil {
+		fmt.Println(err)
+	}
+	if count > 0 {
+		return false
+	}
+	return true
+}
+
+
+/**
+ * Checks if the given wordlist name is uniqe
+ * 
+ * @name isWordlistUniqe
+ * @return bool
+ */
+func (this *DBHandler) isWordlistUniqe(name string) bool {
+	stmt, err := this.db.Prepare("select count(*) from wordlists where name = ?")
 	if err != nil {
 		fmt.Println(err)
 	}
