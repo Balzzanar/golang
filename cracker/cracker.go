@@ -18,9 +18,16 @@ const LEDBLINK 		= 2
 const DIRWORDLIST	= "wordlist/"
 const DIRWPA		= "tocrack/"
 
-var log *logger.Logger
-var LEDStatus int  /*  0 - off, 1 - on, 2 - blinking  */
-var dbh *DBHandler
+type Led struct {
+	Name string
+	Port string
+	State int
+	QueuedState int
+}
+
+var log 	*logger.Logger
+var dbh 	*DBHandler
+var ledList	[]Led
 
 
 /**
@@ -29,6 +36,7 @@ var dbh *DBHandler
  * @name main
  */
 func main () {
+	ledList = []Led{}
     var err error
     log, err = logger.New("cracker", 1, os.Stdout)
     if err != nil {
@@ -41,7 +49,13 @@ func main () {
     dbh.StoreWordlist(&Wordlist{id:0, name:"rockyou.txt", size:"143MB", avg_run:30012313})
     dbh.GetAllWpa()
     ScanUpdate()
-    LEDController()
+
+    /* Adding Leds to a list */
+    ledList = append(ledList, Led{Name: "internet_access", Port: "GPIO14", State: LEDOFF, QueuedState: LEDON})
+
+
+	log.Info("Sleeping...")
+	time.Sleep(10 * time.Second)
 }
 
 
@@ -50,37 +64,49 @@ func main () {
  * 
  * @name blickLight
  */
-func LEDController() {
-	LEDStatus = LEDON
+func LEDController(led Led) {
 	for true {
-	    switch LEDStatus {
-	        case LEDBLINK:
-	            LEDBlink(1)
-	        case LEDON: 
-	        	LEDBlink(0)
-	        default:
-	            LEDBlink(0)
-	    }
-
-		// Sleep 
-		log.Info("Sleeping...")
-		time.Sleep(5 * time.Second)
+		for _,led := range ledList {
+			if led.QueuedState != led.State {
+	        	led.State = led.QueuedState
+			    switch led.State {
+			        case LEDBLINK:
+			            go LEDBlink(1, led)
+			        case LEDON: 
+			        	LEDBlink(0, led)
+			        default:
+			            LEDBlink(-1, led)
+			    }
+			}
+		} 
+		time.Sleep(100 * time.Millisecond)
 	}
 }
 
 /**
  * Makes the LED blink NumBlinks times.
  * If NumBlinks = 0, the LED will only be turned on.
+ * If NumBlinks = -1, the LED will only be turned off.
  * 
  * @name LEDBlink
  * @param NumBlinks
  */
-func LEDBlink(NumBlinks int) {
+func LEDBlink(NumBlinks int, led Led) {
 	if NumBlinks == 0 {
 		// Leave the LED on.
+		return
 	}
-	log.Info("Blinking..")
-	time.Sleep(1 * time.Second)
+	if NumBlinks == -1 {
+		// Leave the LED on.
+		return 
+	}
+	for true {
+		if led.State != LEDBLINK {
+			return 
+		}
+		log.Info("Blinking..")
+		time.Sleep(1 * time.Second)
+	}
 }
 
 
@@ -99,7 +125,8 @@ func ScanUpdate() {
             var bssid []byte
             bssidfile := DIRWPA + strings.Split(file.Name(), ".")[0] + ".bssid"
             if bssid, err = ioutil.ReadFile(bssidfile); err != nil {
-                log.Error(fmt.Sprintf("Missing file: %s", bssidfile))
+                log.Error(fmt.Sprintf("Missing file (%s), will ignore: %s", bssidfile, file.Name()))
+                continue
             }
             log.Info(fmt.Sprintf("Found bssid: %s", bssid))
             dbh.StoreWpa(&Wpa{name:file.Name(), bssid:string(bssid)})
