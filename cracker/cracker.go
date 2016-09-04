@@ -28,6 +28,7 @@ type Led struct {
 var log 	*logger.Logger
 var dbh 	*DBHandler
 var ledList	[]*Led
+var jh      *JohnHandler
 
 
 /**
@@ -45,7 +46,10 @@ func main () {
     dbh = new(DBHandler)
     dbh.Init()
     defer dbh.Close()
+    jh = new(JohnHandler)
+    jh.Init()
 
+    /* Scan the given folders */
  //   dbh.StoreWordlist(&Wordlist{id:0, name:"rockyou.txt", size:"143MB", avg_run:30012313})
  //   dbh.GetAllWpa()
  //   ScanUpdate()
@@ -54,12 +58,13 @@ func main () {
     led := &Led{Name: "internet_access", Port: "GPIO14", State: LEDOFF, QueuedState: LEDBLINK}
     ledList = append(ledList, led)
 
-    go LEDController()
-	log.Info("Sleeping...")
-	time.Sleep(10 * time.Second)
-    log.Info("Changing Led-State to ON")
-    led.QueuedState = LEDON
-    time.Sleep(4 * time.Second)
+    /* !TEST!  LED code  !TEST! */
+ //    go LEDController()
+	// log.Info("Sleeping...")
+	// time.Sleep(10 * time.Second)
+ //    log.Info("Changing Led-State to ON")
+ //    led.QueuedState = LEDON
+ //    time.Sleep(4 * time.Second)
 }
 
 /**
@@ -68,7 +73,7 @@ func main () {
  */
 func JohnController() {
     for true {
-        
+
     }
 }
 
