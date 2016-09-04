@@ -27,7 +27,7 @@ type Led struct {
 
 var log 	*logger.Logger
 var dbh 	*DBHandler
-var ledList	[]Led
+var ledList	[]*Led
 
 
 /**
@@ -36,7 +36,7 @@ var ledList	[]Led
  * @name main
  */
 func main () {
-	ledList = []Led{}
+	ledList = []*Led{}
     var err error
     log, err = logger.New("cracker", 1, os.Stdout)
     if err != nil {
@@ -46,36 +46,52 @@ func main () {
     dbh.Init()
     defer dbh.Close()
 
-    dbh.StoreWordlist(&Wordlist{id:0, name:"rockyou.txt", size:"143MB", avg_run:30012313})
-    dbh.GetAllWpa()
-    ScanUpdate()
+ //   dbh.StoreWordlist(&Wordlist{id:0, name:"rockyou.txt", size:"143MB", avg_run:30012313})
+ //   dbh.GetAllWpa()
+ //   ScanUpdate()
 
     /* Adding Leds to a list */
-    ledList = append(ledList, Led{Name: "internet_access", Port: "GPIO14", State: LEDOFF, QueuedState: LEDON})
+    led := &Led{Name: "internet_access", Port: "GPIO14", State: LEDOFF, QueuedState: LEDBLINK}
+    ledList = append(ledList, led)
 
-
+    go LEDController()
 	log.Info("Sleeping...")
 	time.Sleep(10 * time.Second)
+    log.Info("Changing Led-State to ON")
+    led.QueuedState = LEDON
+    time.Sleep(4 * time.Second)
+}
+
+/**
+ * 
+ * @name JohnController
+ */
+func JohnController() {
+    for true {
+        
+    }
 }
 
 
+
 /**
- * Controls the LED, that will indicate the status of the cracker.
+ * Controls the LEDs, that will indicate the status of the cracker.
+ *      To change a LED, set 'QueuedState' to the wanted state.
  * 
- * @name blickLight
+ * @name LEDController
  */
-func LEDController(led Led) {
+func LEDController() {
 	for true {
 		for _,led := range ledList {
 			if led.QueuedState != led.State {
 	        	led.State = led.QueuedState
 			    switch led.State {
 			        case LEDBLINK:
-			            go LEDBlink(1, led)
+			            go LEDLight(LEDBLINK, led)
 			        case LEDON: 
-			        	LEDBlink(0, led)
+			        	LEDLight(LEDON, led)
 			        default:
-			            LEDBlink(-1, led)
+			            LEDLight(LEDOFF, led)
 			    }
 			}
 		} 
@@ -84,27 +100,28 @@ func LEDController(led Led) {
 }
 
 /**
- * Makes the LED blink NumBlinks times.
- * If NumBlinks = 0, the LED will only be turned on.
- * If NumBlinks = -1, the LED will only be turned off.
+ * Makes the LED actually blink by controlling the GPIO ports.
  * 
- * @name LEDBlink
- * @param NumBlinks
+ * @name LEDLight
+ * @param State
+ * @param led
  */
-func LEDBlink(NumBlinks int, led Led) {
-	if NumBlinks == 0 {
+func LEDLight(State int, led *Led) {
+	if State == LEDON {
 		// Leave the LED on.
+        log.Info("Led set to ON!")
 		return
 	}
-	if NumBlinks == -1 {
-		// Leave the LED on.
+	if State == LEDOFF {
+		// Leave the LED off.
+        log.Info("Led set to OFF!")
 		return 
 	}
 	for true {
 		if led.State != LEDBLINK {
 			return 
 		}
-		log.Info("Blinking..")
+		log.Info("Blinking!")
 		time.Sleep(1 * time.Second)
 	}
 }
